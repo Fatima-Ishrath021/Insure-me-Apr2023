@@ -1,0 +1,25 @@
+pipeline {
+  agent any
+
+  tools {
+      maven 'M2_HOME'
+    }
+  stages {
+      //CHECKOUT
+       stage('Checkout') {
+       steps {
+         echo 'Checkout the code from GitRepo'
+         git 'https://github.com/devopscbabu/star-agile-insurance-project.git'
+          	 }
+       }
+       
+       //BUILD
+       stage('Build the Application'){
+        steps {
+	echo "Cleaning... Compiling...Testing... Packaging..."
+	sh 'mvn clean'
+  sh 'mvn package'
+            }
+          }
+  }}
+  
